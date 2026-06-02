@@ -43,7 +43,7 @@ body {
     gap: 3.5vw; 
 }
 
-/* Subtitle and Caption Scale Uniformly */
+/* Subtitle and Caption Scale Uniformly across standard and large screens */
 .wedding-subtitle, .click-caption {
     font-family: 'PP Editorial New', serif;
     color: #4a3e3d;
@@ -51,7 +51,8 @@ body {
     text-transform: uppercase;
     
     font-size: 1.25vw; 
-    letter-spacing: 0.35vw; 
+    /* UPDATED: Pulls desktop letters closer together (reduced from 0.35vw) */
+    letter-spacing: -0.01vw; 
     line-height: 1.2;
 }
 
@@ -133,7 +134,8 @@ body {
     }
     .wedding-subtitle, .click-caption {
         font-size: 3vw;
-        letter-spacing: 0.6vw;
+        /* UPDATED: Pulls small screen/mobile letters closer together (reduced from 0.6vw) */
+        letter-spacing: -0.02vw;
     }
     .names-img {
         width: 62vw;

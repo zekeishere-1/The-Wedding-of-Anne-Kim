@@ -123,7 +123,7 @@ body {
 }
 
 /* ==========================================================================
-   7. Countdown Design Block
+   7. Countdown Design Block (Clean Minimal Layout)
    ========================================================================== */
 .countdown-section {
     display: flex;
@@ -145,7 +145,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center; 
-    gap: clamp(1rem, 2.5vw, 2.5rem); 
+    /* Boosted spacing gap slightly to keep blocks elegantly distinct without colons */
+    gap: clamp(1.5rem, 3.5vw, 3.5rem); 
     width: 100%;
 }
 
@@ -173,15 +174,6 @@ body {
     font-weight: 200;
 }
 
-.time-separator {
-    font-family: 'PP Editorial New', serif;
-    color: hsl(24, 77%, 54%);
-    font-size: clamp(36px, 4.5vw, 64px);
-    font-weight: 200;
-    line-height: 0.95; 
-    user-select: none;
-}
-
 .event-started-msg {
     font-family: 'PP Editorial New', serif;
     color: hsl(24, 77%, 54%);
@@ -199,22 +191,20 @@ body {
     justify-content: center;
     align-items: center;
     background-color: hsl(40, 100%, 98%);
-    padding: 3vw; /* Creates the outer fluid margin edge */
+    padding: 3vw; 
 }
 
-/* A clean CSS border lining that scales flawlessly with browser window size */
 .border-frame-inner {
     width: 100%;
     height: 100%;
-    min-height: calc(100vh - 6vw); /* Adjusts dynamically to perfectly track the viewport height minus padding */
+    min-height: calc(100vh - 6vw); 
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #e3d1c4; /* Soft elegant line color matching your copper layout details */
+    border: 1px solid #e3d1c4; 
     padding: 4rem;
 }
 
-/* Structural content formatting layout inside the text space */
 .framed-content {
     font-family: 'PP Editorial New', serif;
     color: #bfaea2;
@@ -272,24 +262,18 @@ body {
     .clock-display {
         width: 100%;
         justify-content: center; 
-        gap: 0.3rem; 
+        gap: 1rem; /* Clean gap distribution for space without colons */
     }
 
     .time-block {
-        min-width: 55px; 
+        min-width: 60px; 
         text-align: center;
     }
 
     .time-number {
-        font-size: 28px; 
+        font-size: 32px; 
     }
 
-    .time-separator {
-        line-height: 0.85;
-        font-size: 28px;
-    }
-
-    /* Keeps the inline frame borders beautifully balanced on slim phone windows */
     .framed-details-section {
         padding: 5vw;
     }
