@@ -54,17 +54,28 @@
         </section>
 
         <section id="curtainSection" class="framed-details-section">
-            <div class="paper-stack-deck" id="paperStackDeck">
-                <div class="paper-card" style="--card-index: 0;">
-                    <img src="png/page1.png" alt="Invitation Sheet 1" class="paper-img">
+            
+            <div class="deck-wrapper-relative">
+                
+                <div id="deckTapHint" class="deck-hint-overlay">
+                    <span class="hint-icon-ripple"></span>
+                    <span class="hint-text-label">Tap to Flip</span>
                 </div>
-                <div class="paper-card" style="--card-index: 1;">
-                    <img src="png/page2.png" alt="Invitation Sheet 2" class="paper-img">
+
+                <div class="paper-stack-deck" id="paperStackDeck">
+                    <div class="paper-card" style="--card-index: 0;">
+                        <img src="png/page1.png" alt="Invitation Sheet 1" class="paper-img">
+                    </div>
+                    <div class="paper-card" style="--card-index: 1;">
+                        <img src="png/page2.png" alt="Invitation Sheet 2" class="paper-img">
+                    </div>
+                    <div class="paper-card" style="--card-index: 2;">
+                        <img src="png/page3.png" alt="Invitation Sheet 3" class="paper-img">
+                    </div>
                 </div>
-                <div class="paper-card" style="--card-index: 2;">
-                    <img src="png/page3.png" alt="Invitation Sheet 3" class="paper-img">
-                </div>
+
             </div>
+
         </section>
 
     </div>
@@ -115,7 +126,7 @@
         }
 
         updateCountdownClock();
-        const clockIntervalEngine = setInterval(updateCountdownClock, 1000); // Set back to standard smooth 1-second ticks
+        const clockIntervalEngine = setInterval(updateCountdownClock, 1000);
 
         /* ==========================================================================
            3. Viewport Transitions & Scroll Layout Tracking
@@ -155,13 +166,17 @@
            4. Paper Card Stack Shuffle Controller
            ========================================================================== */
         const deckContainer = document.getElementById('paperStackDeck');
+        const hintNotice = document.getElementById('deckTapHint');
         let canShuffle = true; 
 
         deckContainer.addEventListener('click', () => {
             if (!canShuffle) return; 
             canShuffle = false;
 
-            // Instantly fires the zero-latency paper deck shuffle noise
+            if (hintNotice) {
+                hintNotice.classList.add('hint-dismissed');
+            }
+
             audioManager.playInstant('paper', 0.65);
 
             let cards = deckContainer.querySelectorAll('.paper-card');

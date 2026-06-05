@@ -46,7 +46,7 @@ body {
 }
 
 .nav-logo {
-    width: 110px; /* Optimized crisp default scale for laptop/desktop views */
+    width: 110px; 
     height: auto;
     display: block;
     opacity: 0.9;
@@ -89,7 +89,6 @@ body {
     z-index: 1; 
 }
 
-/* Apple Liquid Glass Card Styling */
 .hero-content {
     display: flex;
     flex-direction: column;
@@ -104,7 +103,7 @@ body {
     border-radius: 24px; 
     padding: clamp(2rem, 5vw, 4rem);
     padding-top: clamp(4rem, 8vw, 6rem); 
-    padding-bottom: 2.5rem; /* Generates clean space for the scroll notice */
+    padding-bottom: 2.5rem; 
     box-shadow: 
         0 4px 30px rgba(0, 0, 0, 0.03),
         0 30px 70px rgba(74, 62, 61, 0.08),
@@ -223,18 +222,9 @@ body {
 }
 
 @keyframes breathingLine {
-    0% {
-        background-position: top;
-        opacity: 0.2;
-    }
-    50% {
-        background-position: bottom;
-        opacity: 0.8;
-    }
-    100% {
-        background-position: top;
-        opacity: 0.2;
-    }
+    0% { background-position: top; opacity: 0.2; }
+    50% { background-position: bottom; opacity: 0.8; }
+    100% { background-position: top; opacity: 0.2; }
 }
 
 /* ==========================================================================
@@ -246,7 +236,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 11rem 2rem 5rem 2rem; /* Desktop configuration headroom padding */
+    padding: 11rem 2rem 5rem 2rem; 
     
     background-image: url('png/curtain.png');
     background-repeat: no-repeat;
@@ -261,6 +251,14 @@ body {
 /* ==========================================================================
    9. Pure Paper Interactive Stacking & Kinetic Shuffling Layout Architecture
    ========================================================================== */
+.deck-wrapper-relative {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
 .paper-stack-deck {
     position: relative;
     width: 100%;
@@ -332,13 +330,74 @@ body {
         box-shadow: 25px 30px 50px rgba(0, 0, 0, 0.3);
         z-index: 12;
     }
-    50% {
-        z-index: 1;
-    }
+    50% { z-index: 1; }
     100% {
         transform: translateY(24px) translateX(-12px) rotate(-5deg);
         z-index: 1;
     }
+}
+
+/* ==========================================================================
+   9b. Tap to Flip Invitation Micro-Notice Tooltip Styling
+   ========================================================================== */
+.deck-hint-overlay {
+    position: absolute;
+    top: -45px; 
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 20; 
+    pointer-events: none; 
+    opacity: 0;
+    animation: hintFadeInEntrance 1.4s ease-out 0.6s forwards;
+    transition: opacity 0.4s cubic-bezier(0.19, 1, 0.22, 1), transform 0.4s ease-out;
+    will-change: opacity, transform;
+}
+
+.hint-text-label {
+    font-family: 'PP Editorial New', serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #FFFAF0; /* CHANGED: Set target notice text to customized Ivory scale */
+    text-transform: uppercase;
+    font-weight: 200;
+    /* Soft text-shadow contrast preservation overlay anchor */
+    text-shadow: 0 2px 5px rgba(74, 62, 61, 0.24);
+}
+
+.hint-icon-ripple {
+    width: 6px;
+    height: 6px;
+    background-color: hsl(24, 77%, 54%); 
+    border-radius: 50%;
+    position: relative;
+}
+
+.hint-icon-ripple::after {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    width: 18px;
+    height: 18px;
+    border: 1px solid rgba(226, 110, 49, 0.4);
+    border-radius: 50%;
+    animation: continuousPulseWave 1.8s infinite ease-out;
+}
+
+.deck-hint-overlay.hint-dismissed {
+    opacity: 0 !important;
+    transform: translate3d(0, -12px, 0);
+}
+
+@keyframes hintFadeInEntrance {
+    0% { opacity: 0; transform: translate3d(0, 6px, 0); }
+    100% { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes continuousPulseWave {
+    0% { transform: scale(0.6); opacity: 1; }
+    100% { transform: scale(1.5); opacity: 0; }
 }
 
 /* ==========================================================================
@@ -353,7 +412,6 @@ body {
    11. Comprehensive Responsive Mobile/Tablet Optimization Engine
    ========================================================================== */
 @media (max-width: 768px) {
-    /* Fixed the small logo issue: sets an elegant, highly visible responsive width scale */
     .top-nav {
         top: 25px;
     }
@@ -362,9 +420,8 @@ body {
         width: 90px; 
     }
 
-    /* Fixed the awkward far distance between logo and stack */
     .framed-details-section {
-        padding-top: 7rem; /* Brought padding significantly down to close the empty gap */
+        padding-top: 7rem; 
         padding-bottom: 3rem;
     }
 
@@ -376,11 +433,15 @@ body {
     .scroll-line {
         height: 25px;
     }
+
+    .deck-hint-overlay {
+        top: -38px;
+    }
 }
 
 @media (max-width: 480px) {
     .nav-logo {
-        width: 85px; /* Perfect target mobile sizing balance */
+        width: 85px; 
     }
 
     .hero-content {
